@@ -16,7 +16,7 @@ public class Freq implements Command{
             Path filepath = Paths.get(path);
             try {
                 String content = readString(filepath);
-                content = content.replaceAll("[^a-zA-Z ]","");
+                content = content.replaceAll("[^a-zA-Z -]","");
                 content = content.toLowerCase(Locale.ROOT);
                 var v = content.split(" ");
                 List a = new ArrayList();
