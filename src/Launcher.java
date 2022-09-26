@@ -19,28 +19,25 @@ public class Launcher {
         cmds.add(new Quit());
         cmds.add(new Freq());
         cmds.add(new Fibo());
+        cmds.add(new Predict());
         var pointbreak = true;
         int count = 0;
-        while(true){
+        do {
             System.out.println("Bienvenue Que puis-je faire pour vous ? :");
             String line = s.nextLine();
-            for (Command cmd : cmds){
-                if(Objects.equals(line, cmd.name())){
+            for (Command cmd : cmds) {
+                if (Objects.equals(line, cmd.name())) {
                     var v = cmd.run(s);
-                    if(v)
+                    if (v)
                         pointbreak = false;
                     break;
-                }
-                else
+                } else
                     count += 1;
             }
-            if(count == cmds.size())
+            if (count == cmds.size())
                 System.out.println("Unknown command");
             count = 0;
 
-            if(!pointbreak) {
-                break;
-            }
-        }
+        } while (pointbreak);
     }
 }

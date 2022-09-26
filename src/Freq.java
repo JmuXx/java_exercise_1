@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -19,18 +18,18 @@ public class Freq implements Command{
                 content = content.replaceAll("[^a-zA-Z -]","");
                 content = content.toLowerCase(Locale.ROOT);
                 var v = content.split(" ");
-                List a = new ArrayList();
-                for (int i = 0; i < v.length; i++) {
-                    if(!v[i].isBlank()){
-                        a.add(v[i]);
+                List<String> a = new ArrayList<String>();
+                for (String item : v) {
+                    if (!item.isBlank()) {
+                        a.add(item);
                     }
                 }
                 Map<String, Integer> map = new HashMap<String, Integer>();
-                for (Object o : a) {
-                    if (!map.containsKey((String) o)) {
-                        map.put((String) o, 1);
+                for (String o : a) {
+                    if (!map.containsKey(o)) {
+                        map.put(o, 1);
                     } else {
-                        map.put((String) o, map.get((String) o) + 1);
+                        map.put(o, map.get(o) + 1);
                     }
                 }
                 String reskey = "";
@@ -54,7 +53,7 @@ public class Freq implements Command{
                         System.out.println(reskey);
                     }
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 System.out.println("Unreadable file: " + e.getClass().getName() + e);
             }
         return false;
